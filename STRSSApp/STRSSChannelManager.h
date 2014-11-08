@@ -19,6 +19,7 @@
 
 + (STRSSChannelManager*)sharedManager;
 
+- (void)load;
 - (void)addChannel:(STRSSChannel *)channel;
 - (void)insertChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index;
 - (void)removeChannel:(NSUInteger)index;

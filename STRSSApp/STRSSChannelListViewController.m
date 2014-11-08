@@ -20,12 +20,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _channels = [STRSSChannelManager sharedManager].channels.mutableCopy;
+    [_tableview reloadData];
     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (IBAction)updateAllChannel:(id)sender
@@ -70,7 +77,9 @@
 {
     static NSString *CellIdentifier = kCellIdentifierChannelCell;
     STRSSChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    cell.titleLb.text = @"channelTitle";
+    STRSSChannel *item = _channels[indexPath.row];
+    cell.titleLb.text = item.title;
+    // TODO : No read is count
     NSNumber *countNumber = @(100);
     cell.countNumberLb.text = (countNumber.integerValue > 99) ? @"99+" : countNumber.stringValue;
     return cell;
@@ -81,11 +90,13 @@
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Show Channel Item List
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowChannelItemList]) {
         STRSSItemListViewController *vc = segue.destinationViewController;
         // 데이터 세팅
     }
-    
+
+    // Present Feed List
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierPresentFeedList]) {
         STRSSFeedListViewController *vc = segue.destinationViewController;
         // 데이터 세팅

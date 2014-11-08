@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3DB127EA-B3F5-4D5B-AE78-95BFE152DF7D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>STRSSApp</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CD68D755148AAF1C9F9D5E7A5CD5A5FB4BE54052</key>
+		<string>https://github.com/fwidget/STRSSApp.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>STRSSApp.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CD68D755148AAF1C9F9D5E7A5CD5A5FB4BE54052</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/fwidget/STRSSApp.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CD68D755148AAF1C9F9D5E7A5CD5A5FB4BE54052</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CD68D755148AAF1C9F9D5E7A5CD5A5FB4BE54052</string>
+			<key>IDESourceControlWCCName</key>
+			<string>STRSSApp</string>
+		</dict>
+	</array>
+</dict>
+</plist>

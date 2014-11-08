@@ -9,9 +9,20 @@
 #import "STRSSDataManager.h"
 #import <CoreData/CoreData.h>
 
+static STRSSDataManager *_sharedInstance;
+
 @implementation STRSSDataManager
 
 @synthesize managedObjectContext = _managedObjectContext; // 외부에서는 readOnly로 내부에서 사용하기 위해 synthesize이용
+
++ (STRSSDataManager *)sharedInstance
+{
+    if (_sharedInstance) {
+        _sharedInstance = [[STRSSDataManager alloc]init];
+    }
+
+    return _sharedInstance;
+}
 
 - (void)save
 {
@@ -100,11 +111,12 @@
     NSString *identifier = (NSString *)CFBridgingRelease(CFUUIDCreateString(NULL, uuid));
     CFRelease(uuid);
     channel.indentifier = identifier;
-    
-    //TODO:index설정 필요
-    /*
-     index
-     */
+    // index
+    NSArray *channels = [self sortedChannels];
+    if (channels) {
+        Channel *item = (Channel *)channels.lastObject;
+        channel.index = [NSNumber numberWithInteger:(item.index.integerValue + 1)];
+    }
     
     return channel;
 }

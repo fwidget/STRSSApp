@@ -33,6 +33,13 @@
     [super viewDidAppear:animated];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    _feeds = [[STRSSDataManager sharedInstance] sortedChannels].mutableCopy;
+    [_tableview reloadData];
+}
+
 - (void)_updateToolbarItems:(NSArray *)items animated:(BOOL)animated
 {
     [self.navigationController setToolbarHidden:NO animated:animated];
@@ -105,8 +112,9 @@
 {
     static NSString *CellIndentifier = kCellIdentifierFeedCell;
     STRSSFeedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIndentifier];
-    cell.titleLb.text = @"";
-    cell.feedUrlLb.text = @"";
+    STRSSItem *item = _feeds[indexPath.row];
+    cell.titleLb.text = item.title;
+    cell.feedUrlLb.text = item.link;
     
     return cell;
 }
@@ -116,11 +124,16 @@
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowAddFeed]) {
         STRSSFeedViewController *vc = segue.destinationViewController;
         vc.addFeedItem = YES;
+        vc.titleTxt.text = @"";
+        vc.feedUrlTxtView.text = @"";
     }
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowFeedDetail]) {
         STRSSFeedViewController *vc = segue.destinationViewController;
-        vc.titleTxt.text = @"";
-        vc.feedUrlTxtView.text = @"";
+        if ([sender isKindOfClass:[STRSSItem class]]) {
+            STRSSItem *item = (STRSSItem *)sender;
+            vc.titleTxt.text = item.title;
+            vc.feedUrlTxtView.text = item.link;
+        }
     }
 }
 

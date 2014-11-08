@@ -16,7 +16,10 @@
 @property (nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, readonly) NSArray *sortedChannels;
 
++ (STRSSDataManager *)sharedInstance;
+
 - (Item *)insertNewItem;
 - (Channel *)insertNewChannel;
+- (void)save;
 
 @end

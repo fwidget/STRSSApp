@@ -156,15 +156,11 @@
 		3A54CC241A08F2DF006586D5 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				3A56C5C11A0E4B23009D33E6 /* CoreData(미사용) */,
 				3A54CC251A08F2F7006586D5 /* STRSSItem.h */,
 				3A54CC261A08F2F7006586D5 /* STRSSItem.m */,
 				3A54CC281A08F377006586D5 /* STRSSChannel.h */,
 				3A54CC291A08F377006586D5 /* STRSSChannel.m */,
-				3A54CC321A09046B006586D5 /* STRSSModel.xcdatamodeld */,
-				3A54CC381A090847006586D5 /* Channel.h */,
-				3A54CC391A090847006586D5 /* Channel.m */,
-				3A54CC351A090846006586D5 /* Item.h */,
-				3A54CC361A090846006586D5 /* Item.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -172,12 +168,32 @@
 		3A54CC2B1A08F8A4006586D5 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				3A54CC3B1A090A10006586D5 /* STRSSDataManager.h */,
-				3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */,
+				3A56C5C21A0E4B4A009D33E6 /* CoreData(미사용) */,
 				3A54CC2C1A08F8DB006586D5 /* STRSSChannelManager.h */,
 				3A54CC2D1A08F8DB006586D5 /* STRSSChannelManager.m */,
 			);
 			name = Manager;
+			sourceTree = "<group>";
+		};
+		3A56C5C11A0E4B23009D33E6 /* CoreData(미사용) */ = {
+			isa = PBXGroup;
+			children = (
+				3A54CC321A09046B006586D5 /* STRSSModel.xcdatamodeld */,
+				3A54CC381A090847006586D5 /* Channel.h */,
+				3A54CC391A090847006586D5 /* Channel.m */,
+				3A54CC351A090846006586D5 /* Item.h */,
+				3A54CC361A090846006586D5 /* Item.m */,
+			);
+			name = "CoreData(미사용)";
+			sourceTree = "<group>";
+		};
+		3A56C5C21A0E4B4A009D33E6 /* CoreData(미사용) */ = {
+			isa = PBXGroup;
+			children = (
+				3A54CC3B1A090A10006586D5 /* STRSSDataManager.h */,
+				3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */,
+			);
+			name = "CoreData(미사용)";
 			sourceTree = "<group>";
 		};
 		3AF355891A0B948600717BB6 /* Category */ = {

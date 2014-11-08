@@ -26,7 +26,11 @@
 {
     [super viewWillAppear:animated];
     if (_addFeedItem) {
+        self.title = @"Add Feed Info";
         [self _updateNavigationItem:YES];
+        _titleTxt.enabled = YES;
+        _titleTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _feedUrlTxtView.editable = YES;
     }
 }
 
@@ -51,10 +55,10 @@
 
 - (void)saveAction
 {
-    STRSSChannel *channel = [[STRSSChannel alloc] init];
+    Channel *channel = [[Channel alloc] init];
     channel.title = _titleTxt.text;
     channel.feedUrlString = _feedUrlTxtView.text;
-    [[STRSSChannelManager sharedManager] addChannel:channel];
+    [[STRSSDataManager sharedInstance] insertNewChannel];
     [self.navigationController popViewControllerAnimated:YES];
 }
 /*

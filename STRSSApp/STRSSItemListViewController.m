@@ -29,7 +29,13 @@
 
 - (IBAction)readAllItem:(id)sender
 {
-    
+    for (Item *item in _channelItems) {
+        item.read = YES;
+    }
+
+    [[STRSSDataManager sharedInstance] save];
+
+    [_tableview reloadData];
 }
 
 #pragma mark - UITableView delegate
@@ -64,10 +70,11 @@
 {
     static NSString *CellIndentifier = kCellIdentifierChannelItemCell;
     STRSSChannelItemCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIndentifier];
-    cell.titleLb.text = @"";
-    cell.dateLb.text = @"";
-    cell.postLb.text = @"";
-    cell.markView.alpha = 0.0f;
+    Item *item = (Item *)_channelItems[indexPath.row];
+    cell.titleLb.text = item.title;
+    cell.dateLb.text = item.pubDate;
+    cell.postLb.text = item.itemDescription;
+    cell.markView.alpha = (item.read) ? 0.0 : 1.0 ;
     return cell;
 }
 
@@ -75,9 +82,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowChannelItemDetail]) {
         STRSSContentViewController *vc = segue.destinationViewController;
-        vc.titleLb.text = @"";
-        vc.dateLb.text = @"";
-        vc.postTextview.text = @"";
+        if ([sender isKindOfClass:[Item class]]) {
+            Item *item = (Item *)sender;
+            vc.titleLb.text = item.title;
+            vc.dateLb.text = item.pubDate;
+            vc.postTextview.text = item.itemDescription;
+        }
     }
 }
 
