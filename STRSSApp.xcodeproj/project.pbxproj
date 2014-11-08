@@ -1,0 +1,602 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3A05465A1A0CEC3300199503 /* STRSSFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0546591A0CEC3300199503 /* STRSSFeedCell.m */; };
+		3A05465D1A0CEC4800199503 /* STRSSChannelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A05465C1A0CEC4800199503 /* STRSSChannelCell.m */; };
+		3A0546601A0CEC6600199503 /* STRSSChannelItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A05465F1A0CEC6600199503 /* STRSSChannelItemCell.m */; };
+		3A0546631A0CF16000199503 /* RoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A0546621A0CF16000199503 /* RoundView.m */; };
+		3A225FEF1A0B8CD900FE8359 /* STRSSFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A225FEE1A0B8CD900FE8359 /* STRSSFeedViewController.m */; };
+		3A225FF21A0B8CE600FE8359 /* STRSSChannelListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A225FF11A0B8CE600FE8359 /* STRSSChannelListViewController.m */; };
+		3A225FF51A0B8CF000FE8359 /* STRSSItemListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A225FF41A0B8CF000FE8359 /* STRSSItemListViewController.m */; };
+		3A225FF81A0B8CFF00FE8359 /* STRSSContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A225FF71A0B8CFF00FE8359 /* STRSSContentViewController.m */; };
+		3A225FFE1A0B8DBB00FE8359 /* STRSSFeedListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A225FFD1A0B8DBB00FE8359 /* STRSSFeedListViewController.m */; };
+		3A54CC231A0691A8006586D5 /* STRSSAppController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC221A0691A8006586D5 /* STRSSAppController.m */; };
+		3A54CC271A08F2F7006586D5 /* STRSSItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC261A08F2F7006586D5 /* STRSSItem.m */; };
+		3A54CC2A1A08F377006586D5 /* STRSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC291A08F377006586D5 /* STRSSChannel.m */; };
+		3A54CC2E1A08F8DB006586D5 /* STRSSChannelManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC2D1A08F8DB006586D5 /* STRSSChannelManager.m */; };
+		3A54CC341A09046B006586D5 /* STRSSModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC321A09046B006586D5 /* STRSSModel.xcdatamodeld */; };
+		3A54CC371A090846006586D5 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC361A090846006586D5 /* Item.m */; };
+		3A54CC3A1A090847006586D5 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC391A090847006586D5 /* Channel.m */; };
+		3A54CC3D1A090A10006586D5 /* STRSSDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */; };
+		3AF3558C1A0B94D900717BB6 /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3558B1A0B94D900717BB6 /* UINavigationController+Custom.m */; };
+		3AF8DA8F1A067EF3002801FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DA8E1A067EF3002801FF /* main.m */; };
+		3AF8DA921A067EF3002801FF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DA911A067EF3002801FF /* AppDelegate.m */; };
+		3AF8DA951A067EF3002801FF /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DA941A067EF3002801FF /* ViewController.m */; };
+		3AF8DA981A067EF3002801FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8DA961A067EF3002801FF /* Main.storyboard */; };
+		3AF8DA9A1A067EF3002801FF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8DA991A067EF3002801FF /* Images.xcassets */; };
+		3AF8DA9D1A067EF3002801FF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF8DA9B1A067EF3002801FF /* LaunchScreen.xib */; };
+		3AF8DAA91A067EF3002801FF /* STRSSAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DAA81A067EF3002801FF /* STRSSAppTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3AF8DAA31A067EF3002801FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3AF8DA811A067EF3002801FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3AF8DA881A067EF3002801FF;
+			remoteInfo = STRSSApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3A0546581A0CEC3300199503 /* STRSSFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSFeedCell.h; sourceTree = "<group>"; };
+		3A0546591A0CEC3300199503 /* STRSSFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSFeedCell.m; sourceTree = "<group>"; };
+		3A05465B1A0CEC4800199503 /* STRSSChannelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSChannelCell.h; sourceTree = "<group>"; };
+		3A05465C1A0CEC4800199503 /* STRSSChannelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSChannelCell.m; sourceTree = "<group>"; };
+		3A05465E1A0CEC6600199503 /* STRSSChannelItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSChannelItemCell.h; sourceTree = "<group>"; };
+		3A05465F1A0CEC6600199503 /* STRSSChannelItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSChannelItemCell.m; sourceTree = "<group>"; };
+		3A0546611A0CF16000199503 /* RoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundView.h; sourceTree = "<group>"; };
+		3A0546621A0CF16000199503 /* RoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundView.m; sourceTree = "<group>"; };
+		3A225FED1A0B8CD900FE8359 /* STRSSFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSFeedViewController.h; sourceTree = "<group>"; };
+		3A225FEE1A0B8CD900FE8359 /* STRSSFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSFeedViewController.m; sourceTree = "<group>"; };
+		3A225FF01A0B8CE600FE8359 /* STRSSChannelListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSChannelListViewController.h; sourceTree = "<group>"; };
+		3A225FF11A0B8CE600FE8359 /* STRSSChannelListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSChannelListViewController.m; sourceTree = "<group>"; };
+		3A225FF31A0B8CF000FE8359 /* STRSSItemListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSItemListViewController.h; sourceTree = "<group>"; };
+		3A225FF41A0B8CF000FE8359 /* STRSSItemListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSItemListViewController.m; sourceTree = "<group>"; };
+		3A225FF61A0B8CFF00FE8359 /* STRSSContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSContentViewController.h; sourceTree = "<group>"; };
+		3A225FF71A0B8CFF00FE8359 /* STRSSContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSContentViewController.m; sourceTree = "<group>"; };
+		3A225FFC1A0B8DBB00FE8359 /* STRSSFeedListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSFeedListViewController.h; sourceTree = "<group>"; };
+		3A225FFD1A0B8DBB00FE8359 /* STRSSFeedListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSFeedListViewController.m; sourceTree = "<group>"; };
+		3A54CC211A0691A8006586D5 /* STRSSAppController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSAppController.h; sourceTree = "<group>"; };
+		3A54CC221A0691A8006586D5 /* STRSSAppController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSAppController.m; sourceTree = "<group>"; };
+		3A54CC251A08F2F7006586D5 /* STRSSItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSItem.h; sourceTree = "<group>"; };
+		3A54CC261A08F2F7006586D5 /* STRSSItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSItem.m; sourceTree = "<group>"; };
+		3A54CC281A08F377006586D5 /* STRSSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSChannel.h; sourceTree = "<group>"; };
+		3A54CC291A08F377006586D5 /* STRSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSChannel.m; sourceTree = "<group>"; };
+		3A54CC2C1A08F8DB006586D5 /* STRSSChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSChannelManager.h; sourceTree = "<group>"; };
+		3A54CC2D1A08F8DB006586D5 /* STRSSChannelManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSChannelManager.m; sourceTree = "<group>"; };
+		3A54CC331A09046B006586D5 /* STRSSModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = STRSSModel.xcdatamodel; sourceTree = "<group>"; };
+		3A54CC351A090846006586D5 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		3A54CC361A090846006586D5 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		3A54CC381A090847006586D5 /* Channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Channel.h; sourceTree = "<group>"; };
+		3A54CC391A090847006586D5 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Channel.m; sourceTree = "<group>"; };
+		3A54CC3B1A090A10006586D5 /* STRSSDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSDataManager.h; sourceTree = "<group>"; };
+		3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSDataManager.m; sourceTree = "<group>"; };
+		3AF3558A1A0B94D900717BB6 /* UINavigationController+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Custom.h"; sourceTree = "<group>"; };
+		3AF3558B1A0B94D900717BB6 /* UINavigationController+Custom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Custom.m"; sourceTree = "<group>"; };
+		3AF3558D1A0BAF8600717BB6 /* STRSSPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STRSSPrefixHeader.pch; sourceTree = "<group>"; };
+		3AF8DA891A067EF3002801FF /* STRSSApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = STRSSApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF8DA8D1A067EF3002801FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AF8DA8E1A067EF3002801FF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3AF8DA901A067EF3002801FF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3AF8DA911A067EF3002801FF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3AF8DA931A067EF3002801FF /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3AF8DA941A067EF3002801FF /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3AF8DA971A067EF3002801FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3AF8DA991A067EF3002801FF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3AF8DA9C1A067EF3002801FF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3AF8DAA21A067EF3002801FF /* STRSSAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = STRSSAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AF8DAA71A067EF3002801FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AF8DAA81A067EF3002801FF /* STRSSAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STRSSAppTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3AF8DA861A067EF3002801FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AF8DA9F1A067EF3002801FF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3A0546571A0CEC0E00199503 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				3A0546581A0CEC3300199503 /* STRSSFeedCell.h */,
+				3A0546591A0CEC3300199503 /* STRSSFeedCell.m */,
+				3A05465B1A0CEC4800199503 /* STRSSChannelCell.h */,
+				3A05465C1A0CEC4800199503 /* STRSSChannelCell.m */,
+				3A05465E1A0CEC6600199503 /* STRSSChannelItemCell.h */,
+				3A05465F1A0CEC6600199503 /* STRSSChannelItemCell.m */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		3A0546641A0CF47000199503 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				3A0546611A0CF16000199503 /* RoundView.h */,
+				3A0546621A0CF16000199503 /* RoundView.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		3A225FE91A0B8C3300FE8359 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3A225FF01A0B8CE600FE8359 /* STRSSChannelListViewController.h */,
+				3A225FF11A0B8CE600FE8359 /* STRSSChannelListViewController.m */,
+				3A225FF31A0B8CF000FE8359 /* STRSSItemListViewController.h */,
+				3A225FF41A0B8CF000FE8359 /* STRSSItemListViewController.m */,
+				3A225FF61A0B8CFF00FE8359 /* STRSSContentViewController.h */,
+				3A225FF71A0B8CFF00FE8359 /* STRSSContentViewController.m */,
+				3A225FFC1A0B8DBB00FE8359 /* STRSSFeedListViewController.h */,
+				3A225FFD1A0B8DBB00FE8359 /* STRSSFeedListViewController.m */,
+				3A225FED1A0B8CD900FE8359 /* STRSSFeedViewController.h */,
+				3A225FEE1A0B8CD900FE8359 /* STRSSFeedViewController.m */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3A54CC241A08F2DF006586D5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				3A54CC251A08F2F7006586D5 /* STRSSItem.h */,
+				3A54CC261A08F2F7006586D5 /* STRSSItem.m */,
+				3A54CC281A08F377006586D5 /* STRSSChannel.h */,
+				3A54CC291A08F377006586D5 /* STRSSChannel.m */,
+				3A54CC321A09046B006586D5 /* STRSSModel.xcdatamodeld */,
+				3A54CC381A090847006586D5 /* Channel.h */,
+				3A54CC391A090847006586D5 /* Channel.m */,
+				3A54CC351A090846006586D5 /* Item.h */,
+				3A54CC361A090846006586D5 /* Item.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		3A54CC2B1A08F8A4006586D5 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3A54CC3B1A090A10006586D5 /* STRSSDataManager.h */,
+				3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */,
+				3A54CC2C1A08F8DB006586D5 /* STRSSChannelManager.h */,
+				3A54CC2D1A08F8DB006586D5 /* STRSSChannelManager.m */,
+			);
+			name = Manager;
+			sourceTree = "<group>";
+		};
+		3AF355891A0B948600717BB6 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				3AF3558A1A0B94D900717BB6 /* UINavigationController+Custom.h */,
+				3AF3558B1A0B94D900717BB6 /* UINavigationController+Custom.m */,
+			);
+			name = Category;
+			sourceTree = "<group>";
+		};
+		3AF8DA801A067EF3002801FF = {
+			isa = PBXGroup;
+			children = (
+				3AF3558D1A0BAF8600717BB6 /* STRSSPrefixHeader.pch */,
+				3AF8DA961A067EF3002801FF /* Main.storyboard */,
+				3AF8DA8B1A067EF3002801FF /* STRSSApp */,
+				3AF8DAA51A067EF3002801FF /* STRSSAppTests */,
+				3AF8DA8A1A067EF3002801FF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3AF8DA8A1A067EF3002801FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3AF8DA891A067EF3002801FF /* STRSSApp.app */,
+				3AF8DAA21A067EF3002801FF /* STRSSAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3AF8DA8B1A067EF3002801FF /* STRSSApp */ = {
+			isa = PBXGroup;
+			children = (
+				3A225FE91A0B8C3300FE8359 /* ViewControllers */,
+				3A0546571A0CEC0E00199503 /* TableViewCell */,
+				3A0546641A0CF47000199503 /* Common */,
+				3AF355891A0B948600717BB6 /* Category */,
+				3A54CC2B1A08F8A4006586D5 /* Manager */,
+				3A54CC241A08F2DF006586D5 /* model */,
+				3AF8DA901A067EF3002801FF /* AppDelegate.h */,
+				3AF8DA911A067EF3002801FF /* AppDelegate.m */,
+				3AF8DA931A067EF3002801FF /* ViewController.h */,
+				3AF8DA941A067EF3002801FF /* ViewController.m */,
+				3AF8DA991A067EF3002801FF /* Images.xcassets */,
+				3AF8DA9B1A067EF3002801FF /* LaunchScreen.xib */,
+				3AF8DA8C1A067EF3002801FF /* Supporting Files */,
+				3A54CC211A0691A8006586D5 /* STRSSAppController.h */,
+				3A54CC221A0691A8006586D5 /* STRSSAppController.m */,
+			);
+			path = STRSSApp;
+			sourceTree = "<group>";
+		};
+		3AF8DA8C1A067EF3002801FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3AF8DA8D1A067EF3002801FF /* Info.plist */,
+				3AF8DA8E1A067EF3002801FF /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3AF8DAA51A067EF3002801FF /* STRSSAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				3AF8DAA81A067EF3002801FF /* STRSSAppTests.m */,
+				3AF8DAA61A067EF3002801FF /* Supporting Files */,
+			);
+			path = STRSSAppTests;
+			sourceTree = "<group>";
+		};
+		3AF8DAA61A067EF3002801FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3AF8DAA71A067EF3002801FF /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3AF8DA881A067EF3002801FF /* STRSSApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AF8DAAC1A067EF3002801FF /* Build configuration list for PBXNativeTarget "STRSSApp" */;
+			buildPhases = (
+				3AF8DA851A067EF3002801FF /* Sources */,
+				3AF8DA861A067EF3002801FF /* Frameworks */,
+				3AF8DA871A067EF3002801FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = STRSSApp;
+			productName = STRSSApp;
+			productReference = 3AF8DA891A067EF3002801FF /* STRSSApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3AF8DAA11A067EF3002801FF /* STRSSAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3AF8DAAF1A067EF3002801FF /* Build configuration list for PBXNativeTarget "STRSSAppTests" */;
+			buildPhases = (
+				3AF8DA9E1A067EF3002801FF /* Sources */,
+				3AF8DA9F1A067EF3002801FF /* Frameworks */,
+				3AF8DAA01A067EF3002801FF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3AF8DAA41A067EF3002801FF /* PBXTargetDependency */,
+			);
+			name = STRSSAppTests;
+			productName = STRSSAppTests;
+			productReference = 3AF8DAA21A067EF3002801FF /* STRSSAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3AF8DA811A067EF3002801FF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = STRSS;
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = devst;
+				TargetAttributes = {
+					3AF8DA881A067EF3002801FF = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					3AF8DAA11A067EF3002801FF = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = 3AF8DA881A067EF3002801FF;
+					};
+				};
+			};
+			buildConfigurationList = 3AF8DA841A067EF3002801FF /* Build configuration list for PBXProject "STRSSApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3AF8DA801A067EF3002801FF;
+			productRefGroup = 3AF8DA8A1A067EF3002801FF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3AF8DA881A067EF3002801FF /* STRSSApp */,
+				3AF8DAA11A067EF3002801FF /* STRSSAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3AF8DA871A067EF3002801FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AF8DA981A067EF3002801FF /* Main.storyboard in Resources */,
+				3AF8DA9D1A067EF3002801FF /* LaunchScreen.xib in Resources */,
+				3AF8DA9A1A067EF3002801FF /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AF8DAA01A067EF3002801FF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3AF8DA851A067EF3002801FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3A225FF81A0B8CFF00FE8359 /* STRSSContentViewController.m in Sources */,
+				3A05465A1A0CEC3300199503 /* STRSSFeedCell.m in Sources */,
+				3A54CC371A090846006586D5 /* Item.m in Sources */,
+				3A54CC2E1A08F8DB006586D5 /* STRSSChannelManager.m in Sources */,
+				3A0546601A0CEC6600199503 /* STRSSChannelItemCell.m in Sources */,
+				3A225FEF1A0B8CD900FE8359 /* STRSSFeedViewController.m in Sources */,
+				3AF8DA951A067EF3002801FF /* ViewController.m in Sources */,
+				3A0546631A0CF16000199503 /* RoundView.m in Sources */,
+				3A54CC3A1A090847006586D5 /* Channel.m in Sources */,
+				3A225FFE1A0B8DBB00FE8359 /* STRSSFeedListViewController.m in Sources */,
+				3A225FF51A0B8CF000FE8359 /* STRSSItemListViewController.m in Sources */,
+				3AF8DA921A067EF3002801FF /* AppDelegate.m in Sources */,
+				3AF3558C1A0B94D900717BB6 /* UINavigationController+Custom.m in Sources */,
+				3A54CC3D1A090A10006586D5 /* STRSSDataManager.m in Sources */,
+				3AF8DA8F1A067EF3002801FF /* main.m in Sources */,
+				3A05465D1A0CEC4800199503 /* STRSSChannelCell.m in Sources */,
+				3A54CC271A08F2F7006586D5 /* STRSSItem.m in Sources */,
+				3A54CC231A0691A8006586D5 /* STRSSAppController.m in Sources */,
+				3A54CC2A1A08F377006586D5 /* STRSSChannel.m in Sources */,
+				3A225FF21A0B8CE600FE8359 /* STRSSChannelListViewController.m in Sources */,
+				3A54CC341A09046B006586D5 /* STRSSModel.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3AF8DA9E1A067EF3002801FF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3AF8DAA91A067EF3002801FF /* STRSSAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3AF8DAA41A067EF3002801FF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3AF8DA881A067EF3002801FF /* STRSSApp */;
+			targetProxy = 3AF8DAA31A067EF3002801FF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3AF8DA961A067EF3002801FF /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AF8DA971A067EF3002801FF /* Base */,
+			);
+			name = Main.storyboard;
+			path = STRSSApp;
+			sourceTree = "<group>";
+		};
+		3AF8DA9B1A067EF3002801FF /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3AF8DA9C1A067EF3002801FF /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3AF8DAAA1A067EF3002801FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3AF8DAAB1A067EF3002801FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3AF8DAAD1A067EF3002801FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/STRSSPrefixHeader.pch";
+				INFOPLIST_FILE = STRSSApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3AF8DAAE1A067EF3002801FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/STRSSPrefixHeader.pch";
+				INFOPLIST_FILE = STRSSApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3AF8DAB01A067EF3002801FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = STRSSAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/STRSSApp.app/STRSSApp";
+			};
+			name = Debug;
+		};
+		3AF8DAB11A067EF3002801FF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = STRSSAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/STRSSApp.app/STRSSApp";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3AF8DA841A067EF3002801FF /* Build configuration list for PBXProject "STRSSApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF8DAAA1A067EF3002801FF /* Debug */,
+				3AF8DAAB1A067EF3002801FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AF8DAAC1A067EF3002801FF /* Build configuration list for PBXNativeTarget "STRSSApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF8DAAD1A067EF3002801FF /* Debug */,
+				3AF8DAAE1A067EF3002801FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3AF8DAAF1A067EF3002801FF /* Build configuration list for PBXNativeTarget "STRSSAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3AF8DAB01A067EF3002801FF /* Debug */,
+				3AF8DAB11A067EF3002801FF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3A54CC321A09046B006586D5 /* STRSSModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3A54CC331A09046B006586D5 /* STRSSModel.xcdatamodel */,
+			);
+			currentVersion = 3A54CC331A09046B006586D5 /* STRSSModel.xcdatamodel */;
+			path = STRSSModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 3AF8DA811A067EF3002801FF /* Project object */;
+}

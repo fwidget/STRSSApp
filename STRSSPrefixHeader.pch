@@ -1,0 +1,41 @@
+//
+//  STRSSPrefixHeader.pch
+//  STRSSApp
+//
+//  Created by KIMSEONGTAN on 2014. 11. 6..
+//  Copyright (c) 2014년 devst. All rights reserved.
+//
+
+#ifndef STRSSApp_STRSSPrefixHeader_pch
+#define STRSSApp_STRSSPrefixHeader_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import <QuartzCore/QuartzCore.h>
+
+// NSCode Model
+#import "STRSSItem.h"
+#import "STRSSChannel.h"
+// NSCode Manager
+#import "STRSSChannelManager.h"
+
+// Core Data Model
+#import "Channel.h"
+#import "Item.h"
+// Core Data Manager
+#import "STRSSDataManager.h"
+
+// Storyboard Segue Identifier
+#define kStoryBoardSegueIdentifierShowChannelItemDetail @"ShowChannelItemDetail"
+#define kStoryBoardSegueIdentifierShowChannelItemList   @"ShowChannelItemList"
+#define kStoryBoardSegueIdentifierPresentFeedList       @"PresentFeedList"
+#define kStoryBoardSegueIdentifierShowAddFeed           @"ShowAddFeed"
+#define kStoryBoardSegueIdentifierShowFeedDetail        @"ShowFeedDetail"
+
+// Cell Identifier
+#define kCellIdentifierChannelCell                      @"ChannelCell"
+#define kCellIdentifierChannelItemCell                  @"ChannelItemCell"
+#define kCellIdentifierFeedCell                         @"FeedCell"
+#endif
