@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,8 +35,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _feeds = [[STRSSDataManager sharedInstance] sortedChannels].mutableCopy;
-    [_tableview reloadData];
+//    _feeds = [STRSSChannelManager sharedManager].channels.mutableCopy;
+//    [_tableview reloadData];
+    
+    [self updateViewConstraints];
 }
 
 - (void)_updateToolbarItems:(NSArray *)items animated:(BOOL)animated
@@ -112,11 +113,22 @@
 {
     static NSString *CellIndentifier = kCellIdentifierFeedCell;
     STRSSFeedCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIndentifier];
-    STRSSItem *item = _feeds[indexPath.row];
+    [self _updateCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (void)_updateCell:(STRSSFeedCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    STRSSChannel *item = _feeds[indexPath.row];
     cell.titleLb.text = item.title;
     cell.feedUrlLb.text = item.link;
-    
-    return cell;
+}
+
+- (void)_updateVisibleCells
+{
+    for (STRSSFeedCell *cell in [_tableview visibleCells]) {
+        [self _updateCell:cell atIndexPath:[_tableview indexPathForCell:cell]];
+    }
 }
 
 #pragma mark - Navigation

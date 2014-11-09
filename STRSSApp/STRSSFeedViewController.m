@@ -8,6 +8,7 @@
 
 #import "STRSSFeedViewController.h"
 #import "STRSSChannel.h"
+#import "STRSSFeedListViewController.h"
 
 @interface STRSSFeedViewController ()
 
@@ -55,10 +56,11 @@
 
 - (void)saveAction
 {
-    Channel *channel = [[Channel alloc] init];
+    STRSSChannel *channel = [[STRSSChannel alloc] init];
     channel.title = _titleTxt.text;
     channel.feedUrlString = _feedUrlTxtView.text;
-    [[STRSSDataManager sharedInstance] insertNewChannel];
+    channel.link = _feedUrlTxtView.text;
+    [[STRSSChannelManager sharedManager] addChannel:channel];
     [self.navigationController popViewControllerAnimated:YES];
 }
 /*

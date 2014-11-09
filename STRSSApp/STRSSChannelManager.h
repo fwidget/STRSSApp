@@ -11,15 +11,13 @@
 @class STRSSChannel, STRSSItem;
 
 @interface STRSSChannelManager : NSObject
-{
-    NSMutableArray *channels_;
-}
 
-@property (nonatomic, readonly) NSArray *channels;
+@property (nonatomic, strong) NSArray *channels;
 
 + (STRSSChannelManager*)sharedManager;
 
 - (void)load;
+- (void)save;
 - (void)addChannel:(STRSSChannel *)channel;
 - (void)insertChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index;
 - (void)removeChannel:(NSUInteger)index;

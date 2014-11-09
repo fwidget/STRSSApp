@@ -29,7 +29,7 @@ static STRSSChannelManager * _sharedInstance;
         return nil;
     }
     
-    channels_ = [NSMutableArray array]; // 프로퍼티의 형식이 틀린 것에 주의!! 프로퍼티로의 수정을 막고, 내부에서만 수정 가능하게 하기 위한 설정
+    _channels = [NSArray array]; // 프로퍼티의 형식이 틀린 것에 주의!! 프로퍼티로의 수정을 막고, 내부에서만 수정 가능하게 하기 위한 설정
     
     return self;
 }
@@ -41,8 +41,9 @@ static STRSSChannelManager * _sharedInstance;
     if (!channel) {
         return;
     }
-    
-    [channels_ addObject:channel];
+    NSMutableArray *channelArr = _channels.mutableCopy;
+    [channelArr addObject:channel];
+    _channels = (NSArray *)channelArr;
 }
 
 - (void)insertChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index
@@ -51,36 +52,38 @@ static STRSSChannelManager * _sharedInstance;
         return;
     }
     
-    if (-1 >= index || index > [channels_ count]) {
+    if (-1 >= index || index > [_channels count]) {
         return;
     }
-    
-    [channels_ insertObject:channel atIndex:index];
+    NSMutableArray *channelArr = _channels.mutableCopy;
+    [channelArr insertObject:channel atIndex:index];
+    _channels = (NSArray *)channelArr;
 }
 
 - (void)removeChannel:(NSUInteger)index
 {
-    if (-1 >= index || index > [channels_ count] - 1) {
+    if (-1 >= index || index > [_channels count] - 1) {
         return;
     }
-    
-    [channels_ removeObjectAtIndex:index];
+    NSMutableArray *channelArr = _channels.mutableCopy;
+    [channelArr removeObjectAtIndex:index];
+    _channels = (NSArray *)channelArr;
 }
 
 - (void)moveChannelAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
 {
-    if (-1 >= fromIndex || fromIndex > [channels_ count] - 1) {
+    if (-1 >= fromIndex || fromIndex > [_channels count] - 1) {
         return;
     }
-    if (-1 >= toIndex || toIndex > [channels_ count]) {
+    if (-1 >= toIndex || toIndex > [_channels count]) {
         return;
     }
     
-    STRSSChannel *channel;
-    channel = channels_[fromIndex];
-    [channels_ removeObjectAtIndex:fromIndex];
-    [channels_ insertObject:channel atIndex:toIndex];
-    
+    NSMutableArray *channelArr = _channels.mutableCopy;
+    STRSSChannel *channel = channelArr[fromIndex];
+    [channelArr removeObjectAtIndex:fromIndex];
+    [channelArr insertObject:channel atIndex:toIndex];
+    _channels = (NSArray *)channelArr;
 }
 
 
@@ -102,7 +105,7 @@ static STRSSChannelManager * _sharedInstance;
 
 - (NSString *)_channelPath
 {
-    NSString *path = [[self _channelPath] stringByAppendingPathComponent:@"channel.dat"];
+    NSString *path = [[self _channelDir] stringByAppendingPathComponent:@"channel.dat"];
     return path;
 }
 
@@ -118,7 +121,7 @@ static STRSSChannelManager * _sharedInstance;
     }
     
     NSString *channelPath = [self _channelPath];
-    [NSKeyedArchiver archiveRootObject:channels_ toFile:channelPath];
+    [NSKeyedArchiver archiveRootObject:_channels toFile:channelPath];
 }
 
 - (void)load
@@ -133,9 +136,7 @@ static STRSSChannelManager * _sharedInstance;
         return;
     }
     
-    [channels_ setArray:channels];
-    
-    _channels = (NSArray *)channels_;
+    _channels = channels;
 }
 
 @end

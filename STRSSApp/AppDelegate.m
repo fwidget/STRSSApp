@@ -16,7 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    [[STRSSChannelManager sharedManager] load];
     return YES;
 }
 
@@ -39,6 +39,7 @@
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
+    [[STRSSChannelManager sharedManager] save];
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 

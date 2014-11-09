@@ -33,16 +33,25 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    [self _updateVisibleCells];
 }
 
 - (IBAction)updateAllChannel:(id)sender
 {
-    
+    [_tableview reloadData];
 }
 
 - (IBAction)readAllChannel:(id)sender
 {
+    for (STRSSChannel *channel in _channels) {
+        NSMutableArray *items = channel.items;
+        for (STRSSItem *item in items) {
+            item.read = YES;
+        }
+    }
     
+    [self _updateVisibleCells];
 }
 
 #pragma mark - UITableView delegate
@@ -77,13 +86,29 @@
 {
     static NSString *CellIdentifier = kCellIdentifierChannelCell;
     STRSSChannelCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    STRSSChannel *item = _channels[indexPath.row];
-    cell.titleLb.text = item.title;
-    // TODO : No read is count
-    NSNumber *countNumber = @(100);
-    cell.countNumberLb.text = (countNumber.integerValue > 99) ? @"99+" : countNumber.stringValue;
+    [self _updateCell:cell atIndexPath:indexPath];
     return cell;
     
+}
+
+- (void)_updateCell:(STRSSChannelCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    STRSSChannel *channel = _channels[indexPath.row];
+    cell.titleLb.text = channel.title;
+    NSInteger noReadCount = 0;
+    for (STRSSItem *item in channel.items) {
+        if (!item.read) {
+            noReadCount ++;
+        }
+    }
+    cell.countNumberLb.text = (noReadCount > 99) ? @"99+" : [NSString stringWithFormat:@"%d", noReadCount];
+}
+
+- (void)_updateVisibleCells
+{
+    for (STRSSChannelCell *cell in [_tableview visibleCells]) {
+        [self _updateCell:cell atIndexPath:[_tableview indexPathForCell:cell]];
+    }
 }
 
 #pragma mark - Navigation
@@ -94,6 +119,10 @@
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowChannelItemList]) {
         STRSSItemListViewController *vc = segue.destinationViewController;
         // 데이터 세팅
+        if ([sender isKindOfClass:[STRSSChannel class]]) {
+            STRSSChannel *item = (STRSSChannel *)sender;
+            vc.channelItems = item.items;
+        }
     }
 
     // Present Feed List
