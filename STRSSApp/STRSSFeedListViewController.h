@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface STRSSFeedListViewController : UIViewController < UITableViewDataSource, UITableViewDelegate >
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *addItem;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *addBarButtonItem;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBarButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 @property (strong, nonatomic) NSMutableArray *feeds;
-- (IBAction)editItems:(id)sender;
 @end

@@ -11,5 +11,7 @@
 @interface STRSSFeedViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *titleTxt;
 @property (weak, nonatomic) IBOutlet UITextView *feedUrlTxtView;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *editBarButtonItem;
+@property (strong, nonatomic) STRSSChannel *currentChannel;
 @property (nonatomic) BOOL addFeedItem;
 @end

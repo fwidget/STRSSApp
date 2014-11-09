@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SCJ-XZ-e7I">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="SCJ-XZ-e7I">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -21,7 +21,7 @@
                                 <items>
                                     <barButtonItem style="plain" systemItem="edit" id="n8r-d3-3lo">
                                         <connections>
-                                            <action selector="editItems:" destination="vXZ-lx-hvc" id="QyG-ic-kxg"/>
+                                            <action selector="actionEditButtonItemInToolbar:" destination="vXZ-lx-hvc" id="UTb-np-OH8"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -53,7 +53,7 @@
                                         <connections>
                                             <outlet property="feedUrlLb" destination="fLO-mh-1eS" id="xmi-iJ-mIw"/>
                                             <outlet property="titleLb" destination="uRZ-68-hyi" id="pFq-jT-Gpp"/>
-                                            <segue destination="1xk-WP-Swa" kind="show" identifier="ShowFeedDetail" id="Wqd-ud-4WD"/>
+                                            <segue destination="1xk-WP-Swa" kind="show" identifier="ShowFeedDetail" trigger="accessoryAction" id="CBw-1a-BS2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -73,19 +73,19 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="L4v-kf-8vI">
                             <connections>
-                                <action selector="doneAction:" destination="vXZ-lx-hvc" id="483-Qb-Yno"/>
+                                <action selector="actionDoneButtonItemInNavigationbar:" destination="vXZ-lx-hvc" id="tOK-kh-SwH"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addItem" destination="R37-U6-ri1" id="x3x-Vw-scZ"/>
-                        <outlet property="doneItem" destination="L4v-kf-8vI" id="E7j-FW-2hq"/>
+                        <outlet property="addBarButtonItem" destination="R37-U6-ri1" id="Dll-Z8-mea"/>
+                        <outlet property="doneBarButtonItem" destination="L4v-kf-8vI" id="3I7-8S-baa"/>
                         <outlet property="tableview" destination="RLU-9N-96S" id="aBN-RW-xBu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2172" y="188"/>
+            <point key="canvasLocation" x="2169" y="173"/>
         </scene>
         <!--Feed Detail-->
         <scene sceneID="nl4-eU-7SK">
@@ -134,12 +134,22 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Jk-16-m3q">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="edit" id="jRZ-ZQ-2Ki">
+                                        <connections>
+                                            <action selector="actionEditBarButtonItemInToolbar" destination="1xk-WP-Swa" id="jrX-Ym-lNq"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Feed Detail" id="flW-ol-Oud"/>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="editBarButtonItem" destination="jRZ-ZQ-2Ki" id="XKo-Y8-7Fh"/>
                         <outlet property="feedUrlTxtView" destination="SuH-H0-LQJ" id="c8E-0c-acW"/>
                         <outlet property="titleTxt" destination="xvK-5k-HnS" id="cLr-Bl-cA0"/>
                     </connections>

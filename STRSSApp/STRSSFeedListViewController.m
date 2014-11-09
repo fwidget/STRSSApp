@@ -35,7 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-//    _feeds = [STRSSChannelManager sharedManager].channels.mutableCopy;
+    _feeds = [STRSSChannelManager sharedManager].channels.mutableCopy;
 //    [_tableview reloadData];
     
     [self updateViewConstraints];
@@ -47,37 +47,36 @@
     [self setToolbarItems:items animated:animated];
 }
 
-- (IBAction)editItems:(id)sender {
-    if (self.editing) {
-        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(editItems:)];
-        [self _updateToolbarItems:[NSArray arrayWithObjects:barItem, nil] animated:YES];
-    } else {
-        UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneItems:)];
-        [self _updateToolbarItems:[NSArray arrayWithObjects:barItem, nil] animated:YES];
-    }
-    self.editing = !self.editing;
- 
-    [self _updateNavigationItem:YES];
+- (IBAction)actionEditButtonItemInToolbar:(id)sender {
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionDoneButtonItemInToolbar:)];
+    [self _updateToolbarItems:[NSArray arrayWithObjects:buttonItem, nil] animated:YES];
+
+    self.editing = YES;
+    [self _updateNavigationbarItem:YES];
 }
 
-- (void)doneItems:(id)sender
+- (void)actionDoneButtonItemInToolbar:(id)sender
 {
-    [self editItems:sender];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEditButtonItemInToolbar:)];
+    [self _updateToolbarItems:[NSArray arrayWithObjects:buttonItem, nil] animated:YES];
+
+    self.editing = NO;
+    [self _updateNavigationbarItem:YES];
 }
 
-- (IBAction)doneAction:(id)sender
+- (IBAction)actionDoneButtonItemInNavigationbar:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)_updateNavigationItem:(BOOL)animated
+- (void)_updateNavigationbarItem:(BOOL)animated
 {
     if (self.editing) {
         [self.navigationItem setLeftBarButtonItem:nil animated:animated];
         [self.navigationItem setRightBarButtonItem:nil animated:animated];
     } else {
-        [self.navigationItem setLeftBarButtonItem:_addItem animated:animated];
-        [self.navigationItem setRightBarButtonItem:_doneItem animated:animated];
+        [self.navigationItem setLeftBarButtonItem:_addBarButtonItem animated:animated];
+        [self.navigationItem setRightBarButtonItem:_doneBarButtonItem animated:animated];
     }
 }
 
@@ -90,6 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"didSelectRowAtIndexPath");
     [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowFeedDetail sender:_feeds[indexPath.row]];
 }
 
@@ -133,18 +133,19 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSLog(@"prepareForSegue");
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowAddFeed]) {
         STRSSFeedViewController *vc = segue.destinationViewController;
         vc.addFeedItem = YES;
         vc.titleTxt.text = @"";
         vc.feedUrlTxtView.text = @"";
-    }
+    } else
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowFeedDetail]) {
         STRSSFeedViewController *vc = segue.destinationViewController;
-        if ([sender isKindOfClass:[STRSSItem class]]) {
-            STRSSItem *item = (STRSSItem *)sender;
-            vc.titleTxt.text = item.title;
-            vc.feedUrlTxtView.text = item.link;
+        if ([sender isKindOfClass:[STRSSChannel class]]) {
+            STRSSChannel *item = (STRSSChannel *)sender;
+            vc.currentChannel = item;
+
         }
     }
 }

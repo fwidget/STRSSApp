@@ -18,21 +18,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setToolbarHidden:YES];
-    
-    // Do any additional setup after loading the view.
+    if (_addFeedItem) {
+        self.title = @"Add Feed Info";
+        [self _updateNavigationbarItems:YES];
+        _titleTxt.enabled = YES;
+        _titleTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _feedUrlTxtView.editable = YES;
+        [self.navigationController setToolbarHidden:YES];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (_addFeedItem) {
-        self.title = @"Add Feed Info";
-        [self _updateNavigationItem:YES];
-        _titleTxt.enabled = YES;
-        _titleTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _feedUrlTxtView.editable = YES;
+    if (_currentChannel) {
+        _titleTxt.text = _currentChannel.title;
+        _feedUrlTxtView.text = _currentChannel.feedUrlString;
     }
+}
+
+- (IBAction)actionEditBarButtonItemInToolbar
+{
+    UIBarButtonItem *buttonitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionDoneButtonItemInToolbar)];
+    [self _updateToolbarItems:[NSArray arrayWithObjects:buttonitem, nil] animated:YES];
+}
+
+- (void)actionDoneButtonItemInToolbar
+{
+    UIBarButtonItem *buttonitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEditBarButtonItemInToolbar)];
+    [self _updateToolbarItems:[NSArray arrayWithObjects:buttonitem, nil] animated:YES];
+}
+
+- (void)_updateToolbarItems:(NSArray *)items animated:(BOOL)animated
+{
+    [self.navigationController setToolbarHidden:NO animated:animated];
+    [self setToolbarItems:items animated:animated];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -40,21 +60,21 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)_updateNavigationItem:(BOOL)animated
+- (void)_updateNavigationbarItems:(BOOL)animated
 {
-    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction)];
-    UIBarButtonItem *saveItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAction)];
+    UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(actionCancelBarButtonItemInNavigationbar)];
+    UIBarButtonItem *saveBarButtonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(actionSaveBarButtonItemInNavigationbar)];
     
-    [self.navigationItem setLeftBarButtonItem:cancelItem];
-    [self.navigationItem setRightBarButtonItem:saveItem];
+    [self.navigationItem setLeftBarButtonItem:cancelBarButtonItem];
+    [self.navigationItem setRightBarButtonItem:saveBarButtonItem];
 }
 
-- (void)cancelAction
+- (void)actionCancelBarButtonItemInNavigationbar
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)saveAction
+- (void)actionSaveBarButtonItemInNavigationbar
 {
     STRSSChannel *channel = [[STRSSChannel alloc] init];
     channel.title = _titleTxt.text;
