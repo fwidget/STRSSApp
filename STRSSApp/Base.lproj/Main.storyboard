@@ -152,6 +152,7 @@
                         <outlet property="editBarButtonItem" destination="jRZ-ZQ-2Ki" id="XKo-Y8-7Fh"/>
                         <outlet property="feedUrlTxtView" destination="SuH-H0-LQJ" id="c8E-0c-acW"/>
                         <outlet property="titleTxt" destination="xvK-5k-HnS" id="cLr-Bl-cA0"/>
+                        <outlet property="toolbar" destination="7Jk-16-m3q" id="ztE-fK-paP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fCg-lH-y3h" userLabel="First Responder" sceneMemberID="firstResponder"/>

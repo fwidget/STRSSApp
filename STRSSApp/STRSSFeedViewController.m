@@ -24,10 +24,9 @@
         _titleTxt.enabled = YES;
         _titleTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
         _feedUrlTxtView.editable = YES;
-        [self.navigationController setToolbarHidden:YES];
+        _toolbar.hidden = YES;
     }
 }
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
