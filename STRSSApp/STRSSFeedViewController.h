@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *feedUrlTxtView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *editBarButtonItem;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
-@property (strong, nonatomic) STRSSChannel *currentChannel;
+@property (strong, nonatomic) NSIndexPath *indexPath;
+@property (strong, nonatomic) STRSSChannel *channel;
 @property (nonatomic) BOOL addFeedItem;
 @end

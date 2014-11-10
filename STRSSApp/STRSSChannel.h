@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface STRSSChannel : NSObject
+@interface STRSSChannel : NSObject <NSCoding>
 
 @property (nonatomic, readonly) NSString *identifier;
 @property (nonatomic, strong) NSString *feedUrlString;

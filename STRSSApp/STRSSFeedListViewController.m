@@ -35,10 +35,10 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    _feeds = [STRSSChannelManager sharedManager].channels.mutableCopy;
-//    [_tableview reloadData];
     
-    [self updateViewConstraints];
+    [self _updateVisibleCells];
+    UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEditButtonItemInToolbar:)];
+    [self _updateToolbarItems:[NSArray arrayWithObjects:buttonItem, nil] animated:YES];
 }
 
 - (void)_updateToolbarItems:(NSArray *)items animated:(BOOL)animated
@@ -53,6 +53,7 @@
 
     self.editing = YES;
     [self _updateNavigationbarItem:YES];
+    [_tableview setEditing:YES animated:YES];
 }
 
 - (void)actionDoneButtonItemInToolbar:(id)sender
@@ -62,6 +63,7 @@
 
     self.editing = NO;
     [self _updateNavigationbarItem:YES];
+    [_tableview setEditing:NO animated:YES];
 }
 
 - (IBAction)actionDoneButtonItemInNavigationbar:(id)sender
@@ -90,7 +92,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"didSelectRowAtIndexPath");
-    [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowFeedDetail sender:_feeds[indexPath.row]];
+    [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowFeedDetail sender:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -103,10 +105,37 @@
     return 44.0f;
 }
 
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [[STRSSChannelManager sharedManager] removeChannel:indexPath.row];
+        [[STRSSChannelManager sharedManager] save];
+    }
+    [tableView beginUpdates];
+    [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationRight];
+    [tableView endUpdates];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return YES;
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [[STRSSChannelManager sharedManager] moveChannelAtIndex:sourceIndexPath.row toIndex:destinationIndexPath.row];
+    [[STRSSChannelManager sharedManager] save];
+}
+
 #pragma mark - UITableViewDataSource delegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _feeds.count;
+    return [STRSSChannelManager sharedManager].channels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -119,7 +148,7 @@
 
 - (void)_updateCell:(STRSSFeedCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    STRSSChannel *item = _feeds[indexPath.row];
+    STRSSChannel *item = [STRSSChannelManager sharedManager].channels[indexPath.row];
     cell.titleLb.text = item.title;
     cell.feedUrlLb.text = item.link;
 }
@@ -142,10 +171,8 @@
     } else
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowFeedDetail]) {
         STRSSFeedViewController *vc = segue.destinationViewController;
-        if ([sender isKindOfClass:[STRSSChannel class]]) {
-            STRSSChannel *item = (STRSSChannel *)sender;
-            vc.currentChannel = item;
-
+        if ([sender isKindOfClass:[NSIndexPath class]]) {
+            vc.indexPath = (NSIndexPath *)sender;
         }
     }
 }

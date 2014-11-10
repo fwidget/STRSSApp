@@ -20,19 +20,22 @@
     [super viewDidLoad];
     if (_addFeedItem) {
         self.title = NSLocalizedString(@"Add Feed Info", nil);
-        [self _updateNavigationbarItems:YES];
-        _titleTxt.enabled = YES;
-        _titleTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
-        _feedUrlTxtView.editable = YES;
-        _toolbar.hidden = YES;
+        [self _updateNavigationbarItems:_addFeedItem];
+        _toolbar.hidden = _addFeedItem;
+        [self editableInputText:YES];
+    } else {
+        _channel = [STRSSChannelManager sharedManager].channels[_indexPath.row];
+        UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEditBarButtonItemInToolbar)];
+        [self _updateToolbarItems:[NSArray arrayWithObject:buttonItem] animated:YES];
+        [self editableInputText:NO];
     }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (_currentChannel) {
-        _titleTxt.text = _currentChannel.title;
-        _feedUrlTxtView.text = _currentChannel.feedUrlString;
+    if (_channel) {
+        _titleTxt.text = _channel.title;
+        _feedUrlTxtView.text = _channel.feedUrlString;
     }
 }
 
@@ -40,12 +43,27 @@
 {
     UIBarButtonItem *buttonitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(actionDoneButtonItemInToolbar)];
     [self _updateToolbarItems:[NSArray arrayWithObjects:buttonitem, nil] animated:YES];
+    [self editableInputText:YES];
 }
 
 - (void)actionDoneButtonItemInToolbar
 {
+    _channel.title = _titleTxt.text;
+    _channel.feedUrlString = _feedUrlTxtView.text;
+    _channel.link = _feedUrlTxtView.text;
+    [[STRSSChannelManager sharedManager] updateChannel:_channel atIndex:_indexPath.row];
+    [[STRSSChannelManager sharedManager] save];
+
     UIBarButtonItem *buttonitem = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemEdit target:self action:@selector(actionEditBarButtonItemInToolbar)];
     [self _updateToolbarItems:[NSArray arrayWithObjects:buttonitem, nil] animated:YES];
+    [self editableInputText:NO];
+}
+
+
+- (void)editableInputText:(BOOL)enable
+{
+    _titleTxt.userInteractionEnabled = enable;
+    _feedUrlTxtView.userInteractionEnabled = enable;
 }
 
 - (void)_updateToolbarItems:(NSArray *)items animated:(BOOL)animated
@@ -82,6 +100,8 @@
     [[STRSSChannelManager sharedManager] addChannel:channel];
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+
 /*
 #pragma mark - Navigation
 

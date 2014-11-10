@@ -12,5 +12,4 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *addBarButtonItem;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBarButtonItem;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (strong, nonatomic) NSMutableArray *feeds;
 @end

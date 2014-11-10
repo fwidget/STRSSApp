@@ -18,6 +18,7 @@
 
 - (void)load;
 - (void)save;
+- (void)updateChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index;
 - (void)addChannel:(STRSSChannel *)channel;
 - (void)insertChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index;
 - (void)removeChannel:(NSUInteger)index;

@@ -20,9 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _channels = [STRSSChannelManager sharedManager].channels.mutableCopy;
-    [_tableview reloadData];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,7 +41,8 @@
 
 - (IBAction)readAllChannel:(id)sender
 {
-    for (STRSSChannel *channel in _channels) {
+    NSMutableArray *channels = [STRSSChannelManager sharedManager].channels.mutableCopy;
+    for (STRSSChannel *channel in channels) {
         NSMutableArray *items = channel.items;
         for (STRSSItem *item in items) {
             item.read = YES;
@@ -52,12 +50,15 @@
     }
     
     [self _updateVisibleCells];
+    
+    [STRSSChannelManager sharedManager].channels = (NSArray *)channels;
+    [[STRSSChannelManager sharedManager] save];
 }
 
 #pragma mark - UITableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowChannelItemList sender:_channels[indexPath.row]];
+    [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowChannelItemList sender:indexPath];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -79,7 +80,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _channels.count;
+    return [STRSSChannelManager sharedManager].channels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -93,7 +94,8 @@
 
 - (void)_updateCell:(STRSSChannelCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    STRSSChannel *channel = _channels[indexPath.row];
+    NSMutableArray *channels = [STRSSChannelManager sharedManager].channels.mutableCopy;
+    STRSSChannel *channel = channels[indexPath.row];
     cell.titleLb.text = channel.title;
     NSInteger noReadCount = 0;
     for (STRSSItem *item in channel.items) {
@@ -102,6 +104,7 @@
         }
     }
     cell.countNumberLb.text = (noReadCount > 99) ? @"99+" : [NSString stringWithFormat:@"%d", noReadCount];
+    [[STRSSChannelManager sharedManager] save];
 }
 
 - (void)_updateVisibleCells
@@ -118,17 +121,12 @@
     // Show Channel Item List
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowChannelItemList]) {
         STRSSItemListViewController *vc = segue.destinationViewController;
-        // 데이터 세팅
-        if ([sender isKindOfClass:[STRSSChannel class]]) {
-            STRSSChannel *item = (STRSSChannel *)sender;
-            vc.channelItems = item.items;
+        if ([sender isKindOfClass:[NSIndexPath class]]) {
+            vc.indexPath = (NSIndexPath *)sender;
         }
     }
-
     // Present Feed List
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierPresentFeedList]) {
-        STRSSFeedListViewController *vc = segue.destinationViewController;
-        // 데이터 세팅
     }
 }
 

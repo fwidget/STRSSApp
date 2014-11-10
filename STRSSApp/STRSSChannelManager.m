@@ -36,6 +36,17 @@ static STRSSChannelManager * _sharedInstance;
 
 
 #pragma mark - method
+- (void)updateChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index
+{
+    if (!channel || index < 0 || index > [_channels count] - 1) {
+        return;
+    }
+
+    NSMutableArray *channelArr = _channels.mutableCopy;
+    [channelArr replaceObjectAtIndex:index withObject:channel];
+    _channels = (NSArray *)channelArr;
+
+}
 - (void)addChannel:(STRSSChannel *)channel
 {
     if (!channel) {
@@ -52,7 +63,7 @@ static STRSSChannelManager * _sharedInstance;
         return;
     }
     
-    if (-1 >= index || index > [_channels count]) {
+    if (0 > index || index > [_channels count]) {
         return;
     }
     NSMutableArray *channelArr = _channels.mutableCopy;
@@ -62,7 +73,7 @@ static STRSSChannelManager * _sharedInstance;
 
 - (void)removeChannel:(NSUInteger)index
 {
-    if (-1 >= index || index > [_channels count] - 1) {
+    if (0 > index || index > [_channels count] - 1) {
         return;
     }
     NSMutableArray *channelArr = _channels.mutableCopy;
@@ -72,10 +83,10 @@ static STRSSChannelManager * _sharedInstance;
 
 - (void)moveChannelAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
 {
-    if (-1 >= fromIndex || fromIndex > [_channels count] - 1) {
+    if (0 > fromIndex || fromIndex > [_channels count] - 1) {
         return;
     }
-    if (-1 >= toIndex || toIndex > [_channels count]) {
+    if (0 > toIndex || toIndex > [_channels count]) {
         return;
     }
     

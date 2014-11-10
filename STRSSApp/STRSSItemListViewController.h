@@ -11,5 +11,6 @@
 @interface STRSSItemListViewController : UIViewController < UITableViewDelegate, UITableViewDataSource >
 
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-@property (strong, nonatomic) NSMutableArray *channelItems;
+@property (strong, nonatomic) STRSSChannel *channel;
+@property (strong, nonatomic) NSIndexPath *indexPath;
 @end

@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _channel = [STRSSChannelManager sharedManager].channels[_indexPath.row];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -35,17 +36,20 @@
 
 - (IBAction)readAllItem:(id)sender
 {
-    for (STRSSItem *item in _channelItems) {
+    for (STRSSItem *item in _channel.items) {
         item.read = YES;
     }
-
+    [[STRSSChannelManager sharedManager] updateChannel:_channel atIndex:_indexPath.row];
+    [[STRSSChannelManager sharedManager] save];
     [self _updateVisibleCells];
+
+
 }
 
 #pragma mark - UITableView delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    STRSSItem *item = _channelItems[indexPath.row];
+    STRSSItem *item = _channel.items[indexPath.row];
     item.read = YES;
     [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowChannelItemDetail sender:item];
 }
@@ -69,7 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _channelItems.count;
+    return _channel.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -82,7 +86,7 @@
 
 - (void)_updateCell:(STRSSChannelItemCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    STRSSItem *item = (STRSSItem *)_channelItems[indexPath.row];
+    STRSSItem *item = (STRSSItem *)_channel.items[indexPath.row];
     cell.titleLb.text = item.title;
     cell.dateLb.text = item.pubDate;
     cell.postLb.text = item.itemDescription;
