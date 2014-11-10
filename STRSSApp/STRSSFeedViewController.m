@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (_addFeedItem) {
-        self.title = @"Add Feed Info";
+        self.title = NSLocalizedString(@"Add Feed Info", nil);
         [self _updateNavigationbarItems:YES];
         _titleTxt.enabled = YES;
         _titleTxt.clearButtonMode = UITextFieldViewModeWhileEditing;
