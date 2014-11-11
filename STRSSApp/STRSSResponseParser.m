@@ -102,6 +102,11 @@ typedef enum : NSUInteger {
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     // TODO:데이터 파스 처래
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:_downloadedData];
+    [parser setDelegate:self];
+    
+    [parser parse];
+    
     _networkState = STRSSNetworkStateFinished;
 
     if ([_delegate respondsToSelector:@selector(parserDidFinishLoading:)]) {
@@ -132,4 +137,63 @@ typedef enum : NSUInteger {
     }
 }
 
+#pragma mark -
+- (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    if ([elementName isEqualToString:@"rss"]) {
+        _isRss = YES;
+    } else if ([elementName isEqualToString:@"channel"]) {
+        _isChannel = YES;
+    } else if ([elementName isEqualToString:@"item"]) {
+        _isItem = YES;
+        
+        STRSSItem *item = [[STRSSItem alloc]init];
+        
+        [_items addObject:item];
+        
+        _currentItem = item;
+    } else if ([elementName isEqualToString:@"title"] ||
+               [elementName isEqualToString:@"link"]  ||
+               [elementName isEqualToString:@"description"] ||
+               [elementName isEqualToString:@"pubDate"])
+    {
+        _buffer = [NSMutableString string];
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    if ([elementName isEqualToString:@"rss"]) {
+        _isRss = NO;
+    } else if ([elementName isEqualToString:@"channel"]) {
+        _isChannel = NO;
+    } else if ([elementName isEqualToString:@"item"]) {
+        _isItem = NO;
+    } else if ([elementName isEqualToString:@"title"]) {
+        if (_isItem) {
+            _currentItem.title = _buffer;
+        } else if (_isChannel) {
+            _parsedChannel.title = _buffer;
+        }
+    } else if ([elementName isEqualToString:@"link"]) {
+        if (_isItem) {
+            _currentItem.link = _buffer;
+        } else if (_isChannel) {
+            _parsedChannel.link = _buffer;
+        }
+    } else if ([elementName isEqualToString:@"description"]) {
+        if (_isItem) {
+            _currentItem.itemDescription = _buffer;
+        } else if ([elementName isEqualToString:@"pubDate"]) {
+            if (_isItem) {
+                _currentItem.pubDate = _buffer;
+            }
+        }
+    }
+}
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string;
+{
+    [_buffer appendString:string];
+}
 @end
