@@ -91,7 +91,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelectRowAtIndexPath");
     [self performSegueWithIdentifier:kStoryBoardSegueIdentifierShowFeedDetail sender:indexPath];
 }
 
@@ -162,7 +161,6 @@
 
 #pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSLog(@"prepareForSegue");
     if ([segue.identifier isEqualToString:kStoryBoardSegueIdentifierShowAddFeed]) {
         STRSSFeedViewController *vc = segue.destinationViewController;
         vc.addFeedItem = YES;

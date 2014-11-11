@@ -38,7 +38,7 @@ static STRSSChannelManager * _sharedInstance;
 #pragma mark - method
 - (void)updateChannel:(STRSSChannel *)channel atIndex:(NSUInteger)index
 {
-    if (!channel || index < 0 || index > [_channels count] - 1) {
+    if (!channel || index < 0.0 || index > [_channels count] - 1) {
         return;
     }
 
@@ -63,7 +63,7 @@ static STRSSChannelManager * _sharedInstance;
         return;
     }
     
-    if (0 > index || index > [_channels count]) {
+    if (0.0 > index || index > [_channels count]) {
         return;
     }
     NSMutableArray *channelArr = _channels.mutableCopy;
@@ -73,7 +73,7 @@ static STRSSChannelManager * _sharedInstance;
 
 - (void)removeChannel:(NSUInteger)index
 {
-    if (0 > index || index > [_channels count] - 1) {
+    if (0.0 > index || index > [_channels count] - 1) {
         return;
     }
     NSMutableArray *channelArr = _channels.mutableCopy;
@@ -83,10 +83,10 @@ static STRSSChannelManager * _sharedInstance;
 
 - (void)moveChannelAtIndex:(NSUInteger)fromIndex toIndex:(NSUInteger)toIndex
 {
-    if (0 > fromIndex || fromIndex > [_channels count] - 1) {
+    if (0.0 > fromIndex || fromIndex > [_channels count] - 1) {
         return;
     }
-    if (0 > toIndex || toIndex > [_channels count]) {
+    if (0.0 > toIndex || toIndex > [_channels count]) {
         return;
     }
     
