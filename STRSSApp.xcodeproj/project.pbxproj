@@ -24,6 +24,7 @@
 		3A54CC371A090846006586D5 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC361A090846006586D5 /* Item.m */; };
 		3A54CC3A1A090847006586D5 /* Channel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC391A090847006586D5 /* Channel.m */; };
 		3A54CC3D1A090A10006586D5 /* STRSSDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */; };
+		3A806A8F1A1393C400B4D3FC /* STRSSConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A806A8E1A1393C400B4D3FC /* STRSSConnector.m */; };
 		3AAACFC11A124FB5003771F1 /* STRSSResponseParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAACFC01A124FB5003771F1 /* STRSSResponseParser.m */; };
 		3AF3558C1A0B94D900717BB6 /* UINavigationController+Custom.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF3558B1A0B94D900717BB6 /* UINavigationController+Custom.m */; };
 		3AF8DA8F1A067EF3002801FF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8DA8E1A067EF3002801FF /* main.m */; };
@@ -79,6 +80,8 @@
 		3A54CC391A090847006586D5 /* Channel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Channel.m; sourceTree = "<group>"; };
 		3A54CC3B1A090A10006586D5 /* STRSSDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSDataManager.h; sourceTree = "<group>"; };
 		3A54CC3C1A090A10006586D5 /* STRSSDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSDataManager.m; sourceTree = "<group>"; };
+		3A806A8D1A1393C400B4D3FC /* STRSSConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSConnector.h; sourceTree = "<group>"; };
+		3A806A8E1A1393C400B4D3FC /* STRSSConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSConnector.m; sourceTree = "<group>"; };
 		3AAACFBF1A124FB5003771F1 /* STRSSResponseParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRSSResponseParser.h; sourceTree = "<group>"; };
 		3AAACFC01A124FB5003771F1 /* STRSSResponseParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRSSResponseParser.m; sourceTree = "<group>"; };
 		3AF3558A1A0B94D900717BB6 /* UINavigationController+Custom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Custom.h"; sourceTree = "<group>"; };
@@ -199,11 +202,20 @@
 			name = "CoreData(미사용)";
 			sourceTree = "<group>";
 		};
+		3A806A8C1A1393AE00B4D3FC /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		3AAACFBE1A124F96003771F1 /* Connection */ = {
 			isa = PBXGroup;
 			children = (
 				3AAACFBF1A124FB5003771F1 /* STRSSResponseParser.h */,
 				3AAACFC01A124FB5003771F1 /* STRSSResponseParser.m */,
+				3A806A8D1A1393C400B4D3FC /* STRSSConnector.h */,
+				3A806A8E1A1393C400B4D3FC /* STRSSConnector.m */,
 			);
 			name = Connection;
 			sourceTree = "<group>";
@@ -240,6 +252,7 @@
 		3AF8DA8B1A067EF3002801FF /* STRSSApp */ = {
 			isa = PBXGroup;
 			children = (
+				3A806A8C1A1393AE00B4D3FC /* New Group */,
 				3AAACFBE1A124F96003771F1 /* Connection */,
 				3A225FE91A0B8C3300FE8359 /* ViewControllers */,
 				3A0546571A0CEC0E00199503 /* TableViewCell */,
@@ -401,6 +414,7 @@
 				3AF8DA921A067EF3002801FF /* AppDelegate.m in Sources */,
 				3AF3558C1A0B94D900717BB6 /* UINavigationController+Custom.m in Sources */,
 				3A54CC3D1A090A10006586D5 /* STRSSDataManager.m in Sources */,
+				3A806A8F1A1393C400B4D3FC /* STRSSConnector.m in Sources */,
 				3AF8DA8F1A067EF3002801FF /* main.m in Sources */,
 				3A05465D1A0CEC4800199503 /* STRSSChannelCell.m in Sources */,
 				3A54CC271A08F2F7006586D5 /* STRSSItem.m in Sources */,

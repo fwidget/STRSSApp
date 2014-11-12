@@ -44,7 +44,7 @@ typedef enum : NSUInteger {
     _networkState = STRSSNetworkStateInProgress;
 }
 
-// 비동기 파서
+// 동기 파서
 - (void)_parser
 {
     @autoreleasepool {
